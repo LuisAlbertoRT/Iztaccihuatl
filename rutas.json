@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "nombre": "Cascada de la Burbuja",
+        "distancia": "7.2 km",
+        "desnivel": "410 m",
+        "archivo": "cascada-de-la-burbuja.gpx"
+    },
+    {
+        "id": 2,
+        "nombre": "Apatlaco al Refugio Izta",
+        "distancia": "11.5 km",
+        "desnivel": "1,050 m",
+        "archivo": "de-apatlaco-al-refugio-del-iztaccihuatl.gpx"
+    },
+    {
+        "id": 3,
+        "nombre": "Diamantes (Túnel/Dos Aguas)",
+        "distancia": "14.0 km",
+        "desnivel": "920 m",
+        "archivo": "diamantes-subir-por-tunel-y-bajar-por-dos-aguas.gpx"
+    },
+    {
+        "id": 4,
+        "nombre": "Dos Aguas - Cascada Congelada",
+        "distancia": "9.8 km",
+        "desnivel": "600 m",
+        "archivo": "dos-aguas-cascada-congelada-nahualac.gpx"
+    },
+    {
+        "id": 5,
+        "nombre": "Faldas del Izta (Circuito)",
+        "distancia": "15.2 km",
+        "desnivel": "400 m",
+        "archivo": "faldas-de-iztaccihuatl-paso-cortes-la-joya-los-manantiales-c.gpx"
+    },
+    {
+        "id": 6,
+        "nombre": "Iztaccíhuatl Cumbre",
+        "distancia": "18.5 km",
+        "desnivel": "1,800 m",
+        "archivo": "iztaccihuatl-mexico.gpx"
+    },
+    {
+        "id": 7,
+        "nombre": "Vuelta 360 (Ruta Dioses)",
+        "distancia": "22.0 km",
+        "desnivel": "1,400 m",
+        "archivo": "iztaccihuatl-vuelta-360-ruta-de-los-dioses-segunda-parte-.gpx"
+    },
+    {
+        "id": 8,
+        "nombre": "Laguna de Nahualac",
+        "distancia": "6.5 km",
+        "desnivel": "350 m",
+        "archivo": "laguna-de-nahulac.gpx"
+    },
+    {
+        "id": 9,
+        "nombre": "Paso de Cortés a Apatlaco",
+        "distancia": "5.0 km",
+        "desnivel": "200 m",
+        "archivo": "paso-de-cortes-a-cascada-de-apatlaco.gpx"
+    },
+    {
+        "id": 10,
+        "nombre": "Teyotl - Yautupemes - Dos Aguas",
+        "distancia": "12.8 km",
+        "desnivel": "850 m",
+        "archivo": "refugio-del-teyotl-yautupemes-dos-aguas.gpx"
+    }
+]

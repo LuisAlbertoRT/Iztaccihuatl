@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectra Mountain | Guía de Alta Montaña</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+    :root {
+        --strava-orange: #fc4c02;
+        --dark-bg: #121212;
+        --card-bg: #1e1e1e;
+        --text-main: #ffffff;
+    }
+    
+    body { font-family: sans-serif; background-color: var(--dark-bg); color: var(--text-main); margin: 0; padding: 10px; }
+    .container { max-width: 1000px; margin: auto; }
+    
+    /* Grid que cambia según el tamaño de pantalla */
+    .grid { 
+        display: grid; 
+        grid-template-columns: 1fr; /* Una columna en celular */
+        gap: 20px; 
+    }
+    
+    /* En pantallas grandes (tablets/PC), cambiamos a 2 o 3 columnas */
+    @media (min-width: 768px) {
+        .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+        .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #333; }
+    .map-container { height: 250px; width: 100%; } /* Altura fija que funciona bien en todo */
+    
+    .card-body { padding: 15px; }
+    .card-stats { display: flex; justify-content: space-between; margin: 15px 0; border-top: 1px solid #333; padding-top: 10px; }
+    
+    .btn-book { background: var(--strava-orange); color: white; padding: 12px; text-decoration: none; border-radius: 4px; display: block; text-align: center; font-weight: bold; }
+    .leaflet-control-attribution {
+        opacity: 0.3;
+        font-size: 8px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Expediciones</h1>
+            <p>Monitoreo de rutas y servicios de guía profesional.</p>
+        </header>
+
+        <div id="rutas-grid" class="grid"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+
+    <script>
+        async function cargarRutas() {
+            const response = await fetch('rutas.json');
+            const rutas = await response.json();
+            const grid = document.getElementById('rutas-grid');
+
+            // Procesar cada ruta de forma independiente
+            rutas.forEach((r, index) => {
+                const cardId = `map-${r.id}`;
+                grid.innerHTML += `
+                    <div class="card">
+                        <div id="${cardId}" class="map-container"></div>
+                        <div class="card-body">
+                            <h3>${r.nombre}</h3>
+                            <div class="card-stats">
+                                <div class="stat"><span class="stat-val">${r.distancia}</span><span class="stat-lbl">Distancia</span></div>
+                                <div class="stat"><span class="stat-val">${r.desnivel}</span><span class="stat-lbl">Desnivel</span></div>
+                            </div>
+                            <a href="#" class="btn-book">Solicitar Ruta</a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Una vez creados los divs, inicializar los mapas
+            rutas.forEach(r => {
+              const map = L.map(`map-${r.id}`, { 
+    scrollWheelZoom: false, // Esto evita que el mapa bloquee el scroll del celular
+    tap: true 
+}).setView([19.18, -98.64], 11);
+
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Esri World Imagery'
+}).addTo(map);
+// ... resto de tu código de Leaflet GPX
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    maxZoom: 18
+}).addTo(map);
+                
+new L.GPX(r.archivo, { 
+    async: true, 
+    polyline_options: { color: '#fc4c02', weight: 4 },
+    marker_options: {
+        startIconUrl: 'mountain.png', // Icono montaña inicio
+        endIconUrl: 'mountain.png',   // Icono montaña fin
+        shadowUrl: '', // Eliminamos la sombra para que se vea más limpio
+        startIconSize: [30, 30],
+        endIconSize: [30, 30]
+    }
+}).on('loaded', function(e) {
+    map.fitBounds(e.target.getBounds());
+}).addTo(map);
+            });
+        }
+        cargarRutas();
+    </script>
+</body>
+</html>
+
