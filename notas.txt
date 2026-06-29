@@ -1,0 +1,10 @@
+ <section class="hero">
+            <h1>Vectra Mountain: Más allá de la cumbre.</h1>
+            <h2 style="font-size: 1.2rem; max-width: 700px; margin: auto;">
+        Más que una guía, somos tus compañeros de hike. 
+        Transformamos la alta montaña en una experiencia segura, técnica y profesional. 
+        Tu próxima aventura comienza aquí.
+            </h2>
+            <p>  La montaña no es solo un destino, es una forma de entender la vida. En Vectra Mountain, conectamos a entusiastas del senderismo y el alpinismo con las rutas más desafiantes y espectaculares. Ofrecemos monitoreo técnico, guías certificadas y una experiencia de seguridad inigualable para que tu única preocupación sea alcanzar la cima.   </p>
+            <p>   Nuestra misión es profesionalizar el acceso a la alta montaña. Con años de experiencia recorriendo los terrenos más técnicos, hemos diseñado un sistema de gestión de rutas que permite a nuestros expedicionarios visualizar su próximo objetivo con precisión absoluta. Desde los primeros pasos hasta la cima, en Vectra Mountain garantizamos acompañamiento experto, logística detallada y, sobre todo, una pasión inquebrantable por la seguridad en entornos naturales. </p>
+        </section>
